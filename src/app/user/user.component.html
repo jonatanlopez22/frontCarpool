@@ -1,0 +1,145 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <form class="box col-12">
+
+                <h1>¿ A donde te gustaria ir ?</h1>
+                <h3><i class="pe-7s-car"></i></h3>
+                <input type="text" class="form-control" name="filterUser" placeholder="Direccion"
+                    [(ngModel)]="filterUser" />
+
+            </form>
+        </div>
+
+        <div class="row">
+            <div class="card1 col-4" *ngFor="let user of users | filter:filterUser">
+
+                <div class="card card-user">
+                    <div class="image">
+                        <img src="assets/img/login.jpg" />
+                    </div>
+                    <div class="content">
+                        <div class="author">
+
+                            <img class="avatar border-gray" src="assets/img/faces/face-8.jpg" alt="..." />
+
+                            <h2 class="title">{{user.username}}
+                            </h2>
+                            <br>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item text-center">
+                                phone:
+                                <small>{{user.phone}} </small>
+                                <a href="https://api.whatsapp.com/send?phone={{user.phone}}"><i
+                                        class="fa fa-whatsapp"></i></a>
+                                        <br>
+                                        horario:
+                                        <small>De {{user.horaInicio}} a {{user.horaFin}} </small>
+
+                            </li>
+                            <li class="list-group-item text-center">
+                                tarifa:
+                                <small>{{user.tarifa}} </small>
+                            </li>
+                            <li class="list-group-item text-center">
+                                <h3>RUTA</h3>
+                                sentido:
+                                <small>{{user.sentido}} </small>
+                                <br>
+                                origen:<small>{{user.inicioR}}</small>  - destino:<small> {{user.finR}}</small> 
+                                <br>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary"
+                                    (click)="getLocation(user.id,user.latit,user.longit)" data-toggle="modal"
+                                    data-target="#exampleModalCenter">
+                                    Ver Ruta
+                                </button>
+
+                            </li>
+                        </ul>
+
+                        <!-- Modal -->
+                        <div class="modal fade" data-dismiss="modal" data-backdrop="false" id="exampleModalCenter"
+                            tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <!--  -->
+                                        <div class="col-5">
+                                            <p>
+                                                origen: {{user.inicioR}} <br> <small>copia y pega -></small> <br>
+                                                <input type="text" id="origen" placeholder="origen" />
+                                            </p>
+                                        </div>
+                                        <div class="col-5">
+                                            <p>
+
+                                                destino: {{user.finR}} <br> <small>copia y pega -> </small> <br>
+                                                <input type="text" id="destino" placeholder="destino" />
+                                            </p>
+                                        </div>
+
+
+                                        <div id="mode-selector col-2" class="controls">
+                                            <button type="button" name="type" id="changemode-driving">Calcular</button>
+                                            <button type="button" name="type" id="dato" (Click)="(ngOnInit)">
+                                                dato
+                                            </button>
+                                        </div>
+
+
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="main-content">
+
+                                            <ngui-map id="map"
+                                                style="height: 400px; width: 100%; position: relative;top: 0px;left: 0px;background-color: rgb(229, 227, 223);"
+                                                (mapReady$)="onMapReady($event)" (mapClick)="onMapClick($event)"
+                                                (idle)="onIdle($event)">
+
+                                                <marker [position]="[latitudInicial, longitudInicial]"
+                                                    title="Mi posicion" optimized="true"></marker>
+
+
+                                            </ngui-map>
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="text-center"><label for="">seleccione fecha de reserva</label>
+                            <input type="date" name="fechaReserva" id="fechaReserva" [(ngModel)]="fechaReserva"
+                                min="2021-07-01" max="2021-12-31">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <button href="#" class="btn btn-primary alinearbotoncard button" type="submit"
+                            (click)="reserve(user.id)" (click)="actionMethod($event)">reserve</button>
+                    </div>
+                    <div class="text-center">
+                        <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
+                        <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
+                        <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,94 @@
+<div class="main-content">
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="card card-user">
+                    <div class="image">
+                        <img src="assets/img/login.jpg" alt="..." />
+                    </div>
+                    <div class="content">
+                        <div class="author">
+                            
+                                <img class="avatar border-gray" src="assets/img/faces/face-8.jpg" alt="..." />
+
+                                <h2 class="title">{{CommunicationService.username}}
+                                </h2>
+                                <br>
+                           
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item text-center">
+                                phone:
+                                <small>{{CommunicationService.phone}} </small>
+                            </li>
+                            <li class="list-group-item text-center">
+                                tarifa:
+                                <small>{{CommunicationService.tarifa}} </small>
+                            </li>
+                            <li class="list-group-item text-center">
+                                <h3>RUTA</h3>
+                                sentido:
+                                <small>{{CommunicationService.sentido}} </small>
+                                <br>
+                                inicioR:
+                                <small>{{CommunicationService.inicioR}} </small>
+                                <br>
+                                finR:
+                                <small>{{CommunicationService.finR}} </small>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <hr>
+                    <div class="text-center">
+                        <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
+                        <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
+                        <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="boxtitlecart">Reservas</h3>
+                    </div>
+                    <div class="card-body">
+
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">USER</th>
+                                    <th scope="col">PHONE</th>
+                                    <th scope="col">DATE</th>
+                                    <th scope="col">DIRECTION</th>
+                                    <th scope="col">------</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let reserva of reservas">
+                                    <td>{{reserva.id}}</td>
+                                    <td>{{reserva.tomador.username}}</td>
+                                    <td>{{reserva.tomador.phone}} <a
+                                            href="https://api.whatsapp.com/send?phone={{reserva.tomador.phone}}"><i                                               class="fa fa-whatsapp"></i></a></td>
+                                    <td>{{reserva.fechaReserva}}</td>
+                                    <td>{{reserva.tomador.direccion}}</td>
+                                    <td>
+                                        <button class="btn btn-danger" (click) = "Delete(reserva.id)" (click)="actionMethod($event)">Cancelar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

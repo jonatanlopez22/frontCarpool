@@ -1,0 +1,24 @@
+<body>
+
+    <form action="" method="POST" class="form-register">
+        <h2 class="form-titulo">CREA UNA CUENTA</h2>
+        <h3 class="form-h3"> + <i class="pe-7s-user"></i></h3>
+        <div class="contenedor-inputs">
+            <input type="text" name="username" placeholder="Username" [(ngModel)]="username" class="form-control" />
+            <input type="password" name="password" placeholder="Password" [(ngModel)]="password "
+                class="form-control" />
+            <input type="text" name="phone" placeholder="Phone" [(ngModel)]="phone " class="form-control" />
+            <input type="text" name="direccion" placeholder="Direccion" [(ngModel)]="direccion " class="form-control" />
+
+            <input type="submit" name="createUser" value="create User" (click)="createUser()" />
+            <p class="form-link">Ya tienes una cuenta?<a href="#">Ingresa aquí</a></p>
+        </div>
+    </form>
+
+</body>
+
+<script>
+    function getTimeDateCustom() {
+        document.getElementById("liveTimeStr").value = "22:53:05";
+    }
+</script>

@@ -1,0 +1,71 @@
+<body>
+
+    <form action="" method="POST" class="form-register text-center">
+        <h2 class="form-titulo">CREA UNA CUENTA</h2>
+        <h3 class="form-h3"> + <i class="pe-7s-car"></i></h3>
+        <div class="contenedor-inputs text-center">
+            <div>
+                <input type="text" name="username" placeholder="Username" [(ngModel)]="username" class="form-control" />
+                <input type="password" name="password" placeholder="Password" [(ngModel)]="password"
+                    class="form-control" />
+                <input type="text" name="phone" placeholder="Phone" [(ngModel)]="phone " class="form-control" />
+                <input type="text" name="cupos" placeholder="cupos" [(ngModel)]="cupos " class="form-control" />
+                <input type="text" name="tarifa" placeholder="tarifa" [(ngModel)]="tarifa" class="form-control" />
+            </div>
+            <div>
+
+                <input type="text" name="inicioR" placeholder="inicioRuta" [(ngModel)]="inicioR "
+                    class="form-control" />
+                <input type="text" name="finR" placeholder="finRuta" [(ngModel)]="finR " class="form-control" />
+                <br>
+                <label for="" style="color: rgba(0, 255, 255, 0.904);">En que direccion vas</label>
+                <div class="selectbox">
+                    <select class="form-control select" name="sentido" id="sentido" [(ngModel)]="sentido">
+                        <option value="----">----</option>
+                        <option value="norte-sur">norte-sur</option>
+                        <option value="norte-oriente">norte-oriente</option>
+                        <option value="norte-occidente">norte-occidente</option>
+                        <option value="sur-norte">sur-norte</option>
+                        <option value="sur-oriente">sur-oriente</option>
+                        <option value="sur-occidente">sur-occidente</option>
+                        <option value="oriente-sur">oriente-sur</option>
+                        <option value="oriente-norte">oriente-norte</option>
+                        <option value="oriente-occidente">oriente-occidente</option>
+                        <option value="occidente-sur">occidente-sur</option>
+                        <option value="occidente-nort">occidente-norte</option>
+                        <option value="occidente-occidente">occidente-oriente</option>
+
+                    </select>
+
+                </div>
+            </div>
+            <div>
+                <label for="" style="color: rgba(0, 255, 255, 0.904);">hora de inicias</label>
+                <br>
+                <input id="liveTimeStr" type="time" name="horaInicio" min="12:00" max="18:00" step="600"
+                    [(ngModel)]="horaInicio">
+                <br>
+                <label for="" style="color: rgba(0, 255, 255, 0.904);">hora de fin</label>
+                <br>
+                <input type="time" name="horaFin" min="12:00" max="18:00" step="600" [(ngModel)]="horaFin">
+
+
+
+            </div>
+
+        </div>
+
+
+        <input type="submit" name="createCarpool" value="CreateCarpool" (click)="createCarpool()" />
+        <p class="form-link">Ya tienes una cuenta?<a href="#">Ingresa aquí</a></p>
+
+    </form>
+
+</body>
+
+
+<script>
+    function getTimeDateCustom() {
+        document.getElementById("liveTimeStr").value = "22:53:05";
+    }
+</script>

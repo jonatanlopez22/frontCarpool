@@ -1,0 +1,36 @@
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class=" row">
+      <div class="col-12 box">
+
+        <input type="text"  id="origen" placeholder="origen" />
+
+        <input type="text" id="destino" placeholder="destino" />
+
+        <div id="mode-selector" class="controls">
+          <button type="button" name="type" id="changemode-driving">Calcular</button>
+          <button type="button" name="type" id="dato" (Click)="(ngOnInit)">dato
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin-left: 10%">
+
+      <div class="main-content">
+
+        <ngui-map id="map" style="
+    margin-top: 200px;
+    height: 80%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgb(229, 227, 223);
+  " (mapReady$)="onMapReady($event)" (mapClick)="onMapClick($event)" (idle)="onIdle($event)">
+          <marker [position]="[latitudInicial, longitudInicial]" title="Mi posicion" optimized="true"></marker>
+        </ngui-map>
+      </div>
+    </div>
+  </div>
+</div>
